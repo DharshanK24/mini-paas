@@ -1,0 +1,80 @@
+Building image...
+Sending build context to Docker daemon  7.168kB
+Step 1/4 : FROM node:18
+ ---> b50082bc3670
+Step 2/4 : WORKDIR /app
+ ---> Using cache
+ ---> 726f87fdebe4
+Step 3/4 : COPY . .
+ ---> 36505804852e
+Step 4/4 : CMD ["node", "app.js"]
+ ---> Running in 85acdc522536
+ ---> Removed intermediate container 85acdc522536
+ ---> 9a1271d93c1d
+Successfully built 9a1271d93c1d
+Successfully tagged miniapp:latest
+Stopping old container...
+miniapp
+Starting new container...
+f54a75fb7ff912fb81fa9fea14581aa2a180e046b80d67e76a8f58e4cb61540e
+Deployment Done 🚀
+Building image...
+Sending build context to Docker daemon   7.68kB
+Step 1/4 : FROM node:18
+ ---> b50082bc3670
+Step 2/4 : WORKDIR /app
+ ---> Using cache
+ ---> 726f87fdebe4
+Step 3/4 : COPY . .
+ ---> b3be4aff7917
+Step 4/4 : CMD ["node", "app.js"]
+ ---> Running in 0ee8d96e6257
+ ---> Removed intermediate container 0ee8d96e6257
+ ---> eac9be6fdd1d
+Successfully built eac9be6fdd1d
+Successfully tagged miniapp:latest
+Stopping old container...
+miniapp
+Starting new container...
+f4724ab8e3f0648a4f67b73fe9ee512b800bb9a50b3e2cdc86e579d1bdec0618
+Deployment Done 🚀
+Building image...
+Sending build context to Docker daemon  9.728kB
+Step 1/4 : FROM node:18
+ ---> b50082bc3670
+Step 2/4 : WORKDIR /app
+ ---> Using cache
+ ---> 726f87fdebe4
+Step 3/4 : COPY . .
+ ---> a6f3b3ded99d
+Step 4/4 : CMD ["node", "app.js"]
+ ---> Running in 0518a1e58c0d
+ ---> Removed intermediate container 0518a1e58c0d
+ ---> c195b6975269
+Successfully built c195b6975269
+Successfully tagged miniapp:latest
+Stopping old container...
+miniapp
+Starting new container...
+cb5f7a30f31067443d4f6d4d7ab1ba696163ad4400558e69ce1ca9c1874f63bc
+Deployment Done 🚀
+Building image...
+Sending build context to Docker daemon  13.31kB
+Step 1/4 : FROM node:18
+ ---> b50082bc3670
+Step 2/4 : WORKDIR /app
+ ---> Using cache
+ ---> 726f87fdebe4
+Step 3/4 : COPY . .
+ ---> 26f3d7e65aa3
+Step 4/4 : CMD ["node", "app.js"]
+ ---> Running in bd60e1e29bcf
+ ---> Removed intermediate container bd60e1e29bcf
+ ---> b39e65362ae2
+Successfully built b39e65362ae2
+Successfully tagged miniapp:latest
+Stopping old container...
+miniapp
+Starting new container...
+0010dd6cec660e87b9b03918fcc600ada79c9a456a76e5b1b773e25cd18ca5e4
+Deployment Done 🚀
