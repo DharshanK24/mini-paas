@@ -5,26 +5,24 @@ const fs = require('fs');
 const PORT = 3000;
 
 const server = http.createServer((req, res) => {
-  
-  // Serve dashboard
-  if(req.url === '/' || req.url === '/index.html') {
+
+  if (req.url === '/' || req.url === '/index.html') {
     fs.readFile('index.html', (err, data) => {
-      if(err) {
+      if (err) {
         res.writeHead(500);
         res.end('Error loading dashboard');
       } else {
-        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.writeHead(200, { 'Content-Type': 'text/html' });
         res.end(data);
       }
     });
   }
 
-  // Status route
-  else if(req.url === '/status') {
+  else if (req.url === '/status') {
     exec('docker ps --filter name=miniapp', (err, stdout) => {
-      if(err) {
+      if (err) {
         res.end('Error ❌: ' + err.message);
-      } else if(stdout.includes('miniapp')) {
+      } else if (stdout.includes('miniapp')) {
         res.end('Running 🟢');
       } else {
         res.end('Stopped 🔴');
@@ -32,22 +30,20 @@ const server = http.createServer((req, res) => {
     });
   }
 
-  // Deploy route (auto-remove old container)
-  else if(req.url === '/deploy') {
-    exec('docker rm -f miniapp 2>/dev/null && docker run -d --name miniapp myminiapp', (err, stdout) => {
-      if(err) {
-        res.end('Error deploying ❌: ' + err.message);
+  else if (req.url === '/deploy') {
+    exec('docker rm -f miniapp && docker run -d --name miniapp -p 3002:3000 miniapp', (err) => {
+      if (err) {
+        res.end('Deploy failed ❌');
       } else {
         res.end('App deployed successfully ✅');
       }
     });
   }
 
-  // Logs route
-  else if(req.url === '/logs') {
+  else if (req.url === '/logs') {
     exec('docker logs miniapp --tail 20', (err, stdout) => {
-      if(err) {
-        res.end('Error fetching logs ❌: ' + err.message);
+      if (err) {
+        res.end('Error fetching logs ❌');
       } else {
         res.end(stdout || 'No logs yet');
       }
@@ -61,6 +57,6 @@ const server = http.createServer((req, res) => {
 
 });
 
-server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running at http://0.0.0.0:${PORT}`);
 });
