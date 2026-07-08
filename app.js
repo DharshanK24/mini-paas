@@ -19,10 +19,13 @@ const server = http.createServer((req, res) => {
   }
 
   else if (req.url === '/status') {
-    exec('docker ps --filter name=miniapp', (err, stdout) => {
+    exec('docker ps --filter "name=miniapp" --format "{{.Names}}"', (err, stdout) => {
       if (err) {
         res.end('Error ❌: ' + err.message);
-      } else if (stdout.includes('miniapp')) {
+        return;
+      }
+
+      if (stdout.trim() === 'miniapp') {
         res.end('Running 🟢');
       } else {
         res.end('Stopped 🔴');
@@ -31,7 +34,7 @@ const server = http.createServer((req, res) => {
   }
 
   else if (req.url === '/deploy') {
-    exec('docker rm -f miniapp && docker run -d --name miniapp -p 3002:3000 miniapp', (err) => {
+    exec('docker rm -f miniapp && docker run -d --name miniapp -p 3002:3000 -v /var/run/docker.sock:/var/run/docker.sock miniapp', (err) => {
       if (err) {
         res.end('Deploy failed ❌');
       } else {
@@ -45,7 +48,7 @@ const server = http.createServer((req, res) => {
       if (err) {
         res.end('Error fetching logs ❌');
       } else {
-        res.end(stdout || 'No logs yet');
+        res.end(stdout || 'No logs available');
       }
     });
   }
@@ -57,6 +60,6 @@ const server = http.createServer((req, res) => {
 
 });
 
-server.listen(PORT, "0.0.0.0", () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running at http://0.0.0.0:${PORT}`);
 });
