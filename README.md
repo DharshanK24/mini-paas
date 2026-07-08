@@ -1,32 +1,58 @@
-# Mini PaaS Platform 
+# 🚀 Mini PaaS Dashboard using AWS EC2, Docker & Node.js
 
-## Overview
+## 📌 Project Overview
 
-Mini PaaS is a simple Platform as a Service project built using Node.js, Docker, Bash, and Linux. It allows users to deploy and manage containers through a web dashboard.
+Mini PaaS Dashboard is a cloud-based deployment platform that enables users to deploy and manage Docker containers through a simple web dashboard. The project was developed and tested on Ubuntu Linux and deployed on AWS EC2.
 
 ---
 
-## Features
+## 🚀 Features
 
-- Dockerized Node.js application
-- Automated deployment using Bash script
-- Container status monitoring
+- Deploy Docker containers
+- Check container status
 - View application logs
-- Simple dashboard UI
+- Web-based dashboard
+- Dockerized Node.js application
+- GitHub integration
+- SSH-based Git authentication
+- AWS EC2 deployment
 
 ---
 
-## Technologies Used
+## 🛠️ Technologies Used
 
-- Node.js
+- AWS EC2
+- Ubuntu Linux
 - Docker
-- Bash
-- Linux
+- Node.js
 - HTML
+- CSS
+- JavaScript
+- Bash
+- Git
+- GitHub
 
 ---
 
-## Project Structure
+## 🏗️ Architecture
+
+```text
+User
+   │
+Browser
+   │
+AWS EC2
+   │
+Node.js Dashboard
+   │
+Docker Engine
+   │
+Docker Container
+```
+
+---
+
+## 📂 Project Structure
 
 ```text
 mini-paas/
@@ -35,44 +61,69 @@ mini-paas/
 ├── deploy.sh
 ├── index.html
 ├── README.md
-└── screenshots/
 ```
 
 ---
 
-## How to Run
+## ⚙️ Installation
 
-1. Clone the repository
-
-```bash
-git clone https://github.com/DharshanK24/mini-paas.git
-```
-
-2. Build Docker image
+### Clone Repository
 
 ```bash
-sudo docker build -t miniapp:latest .
+git clone git@github.com:DharshanK24/mini-paas.git
+cd mini-paas
 ```
 
-3. Run the container
+### Build Docker Image
 
 ```bash
-sudo docker run -d --restart=always -p 3002:3000 -v /var/run/docker.sock:/var/run/docker.sock --name miniapp miniapp:latest
+docker build -t miniapp .
 ```
 
-4. Open in browser
+### Run Docker Container
+
+```bash
+docker run -d \
+--name miniapp \
+-p 3002:3000 \
+-v /var/run/docker.sock:/var/run/docker.sock \
+miniapp
+```
+
+### Open in Browser
 
 ```text
-http://localhost:3002
+http://<EC2-Public-IP>:3002
 ```
 
 ---
 
-## Future Enhancements
+## 🎯 Skills Demonstrated
 
 - AWS EC2 Deployment
-- GitHub Actions CI/CD
+- Docker Containerization
+- Linux Administration
+- Git & GitHub
+- SSH Authentication
+- Node.js Application Deployment
+
+---
+
+## 🔮 Future Enhancements
+
+- Jenkins CI/CD
+- Docker Compose
 - Nginx Reverse Proxy
 - Prometheus Monitoring
 - Grafana Dashboard
 - Kubernetes Deployment
+
+---
+
+## 👨‍💻 Author
+
+**Dharshan K**
+
+Final Year Computer Science Engineering Student
+
+Aspiring Cloud & DevOps Engineer
