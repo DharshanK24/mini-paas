@@ -85,7 +85,7 @@ docker build -t miniapp .
 ```bash
 docker run -d \
 --name miniapp \
--p 3002:3000 \
+-p 3000:3000 \
 -v /var/run/docker.sock:/var/run/docker.sock \
 miniapp
 ```
@@ -93,7 +93,7 @@ miniapp
 ### Open in Browser
 
 ```text
-http://<EC2-Public-IP>:3002
+http://<EC2-Public-IP>:3000
 ```
 
 ---
